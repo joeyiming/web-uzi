@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+/* 这里面除了包含了字体，还包含了fa-server等icon */
 
 :root {
     --primary-color:#047aed;
@@ -117,62 +118,36 @@ img{
     outline: none;
 }
 
-/* Utilities */
-.container{
-    max-width: 1100px;
-    margin: 0 auto;
-    overflow: auto; /* 好像覆盖掉了h1的margin设定 */
-    padding: 0 40px;
+/* .showcase::after, */
+.showcase::before {
+    content: '';
+    position: absolute;
+    height: 100px;
+    bottom: -70px;
+    right: 0;
+    left: 0;
+    background: #fff;
+    transform: skewY(-3deg);
+    -webkit-transform: skewY(-3deg);
+    -moz-transform: skewY(-3deg);
+    -ms-transform: skewY(-3deg);
 }
 
-.card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    margin: 10px;
-    color: #333;
+/* Stats */
+.stats {
+    padding-top: 100px;
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 30px;
-    cursor: pointer;
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-
+.stats-heading {
+    max-width: 500px;
+    margin: auto;
 }
 
-.btn-outline{
-    background-color: transparent;
-    border: 1px solid #fff;
+.stats .grid h3 {
+    font-size: 35px;
 }
 
-.btn:hover {
-    transform:scale(0.98);
-}
-
-.flex {
-    display: flex;
-    /* 如何竖直排列flex中的元素？ */
-    /* flex-direction: column; */
-    /* 如何居中flex中的元素？ */
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
-.grid {
-    display: grid;
-    /* fraction:分数 */
-    /* 如何将grid中两个元素按照2:1的比例分配宽度？ */
-    /* grid-template-columns: 2fr 1fr; */
-    /* 如何将grid中两个元素按照1:1的比例分配宽度？ */
-    grid-template-columns: repeat(2,1fr);
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+.stats .grid p {
+    font-size: 20px;
+    font-weight: bold;
 }
