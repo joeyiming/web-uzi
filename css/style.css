@@ -90,7 +90,8 @@ img{
 .showcase .grid{
     /* 这个overflow将height350px使得出现的滚动条消失了 */
     overflow: visible;
-    grid-template-columns: 55% 45%;
+    /*grid-template-columns: 55% 45%; 修复之前*/
+    grid-template-columns: 55% auto; /* 修复之后 */
     gap: 30px;
 }
 
@@ -197,6 +198,7 @@ img{
 
 /* Tablets and Under */
 @media(max-width: 768px) {
+    /* 让所有grid元素在窄屏幕下呈一列现显示 */
     .grid,
     .showcase .grid,
     .cli .grid,
@@ -220,7 +222,6 @@ img{
         margin: auto;
     }
 
-    /* .cli .grid 下的第一个元素 */
     .cli .grid > *:first-child {
         grid-column: 1;
         grid-row: 1;
