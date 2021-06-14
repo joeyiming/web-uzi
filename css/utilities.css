@@ -235,3 +235,10 @@
 .p-5 {
     padding: 4rem;
 }
+
+/* Stick */
+.stick {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}

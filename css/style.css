@@ -1,7 +1,7 @@
 /* <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"> */
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
-/* 这里面除了包含了字体，还包含了fa-server等icon */
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap'); */
+/* 这里面除了包含了字体，还包含了fa-server等icon 但国内访问不畅 可用bootcdn给的css文件代替*/
 
 :root {
     --primary-color:#047aed;
