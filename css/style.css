@@ -4,12 +4,16 @@
 /* 这里面除了包含了字体，还包含了fa-server等icon 但国内访问不畅 可用bootcdn给的css文件代替*/
 
 :root {
-    --primary-color:#047aed;
-    --secondary-color:#1c3fa8;
-    --dark-color:#002240;
-    --light-color:#f4f4f4;
-    --success-color:#5CB85C;
-    --error-color:#d9534f;
+    --primary-color: #047aed;
+    /* --secondary-color: #1c3fa8; */
+    --secondary-color: #002240;
+    --dark-color: #002240;
+    /* --dark-color: #0f6407; */
+    --light-color: #f4f4f4;
+    --success-color: #5cb85c;
+    --error-color: #d9534f;
+    --code-font-family: Operator Mono SSm A, Operator Mono SSm B,
+        Source Code Pro, Menlo, Consolas, Monaco;
 }
 
 * {
@@ -18,43 +22,46 @@
     margin: 0;
 }
 
-body{
-    font-family: 'Lato',sans-serif;
+body {
+    font-family: "Lato", sans-serif;
     color: #333;
     line-height: 1.6;
 }
 
-ul{
+ul {
     list-style-type: none;
 }
 
-a{
+a {
     text-decoration: none;
     color: #333;
 }
 
-h1,h2{
+h1,
+h2 {
     font-weight: 300;
     line-height: 1.2;
     margin: 10px 0;
 }
 
-p{
+p {
     margin: 10px 0;
 }
 
 /* 确保图片撑满它的容器 */
-img{
+img {
     width: 100%;
 }
 
-code, pre {
+code,
+pre {
+    font-family: var(--code-font-family), monospace;
     background-color: #333;
     color: #fff;
     padding: 10px;
 }
 
-.navbar{
+.navbar {
     /* background-color: #04a7ed; */
     background-color: var(--primary-color);
     /* color: white; */
@@ -63,11 +70,11 @@ code, pre {
 }
 
 /* navbar内的flex元素，两端对齐 */
-.navbar .flex{
+.navbar .flex {
     justify-content: space-between;
 }
 
-.navbar ul{
+.navbar ul {
     display: flex;
 }
 
@@ -97,8 +104,7 @@ code, pre {
     margin: 20px 0;
 }
 
-.showcase .grid{
-    /* 这个overflow将height350px使得出现的滚动条消失了 */
+.showcase .grid {
     overflow: visible;
     /*grid-template-columns: 55% 45%; 修复之前*/
     grid-template-columns: 55% auto; /* 修复之后 */
@@ -125,9 +131,9 @@ code, pre {
     margin: 30px 0;
 }
 
-.showcase-form input[type='text'],
-.showcase-form input[type='email'] {
-    border:0;
+.showcase-form input[type="text"],
+.showcase-form input[type="email"] {
+    border: 0;
     border-bottom: 1px solid #b4becb;
     width: 100%;
     padding: 3px;
@@ -140,7 +146,7 @@ code, pre {
 
 /* .showcase::after, */
 .showcase::before {
-    content: '';
+    content: "";
     position: absolute;
     height: 100px;
     bottom: -70px;
@@ -178,8 +184,27 @@ code, pre {
 .cli .grid {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
-
 }
+
+.cli pre {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    height: 50%;
+    text-align: center;
+    position: relative;
+}
+
+.cli code {
+    background-color: var(--secondary-color);
+    color: #abffff;
+    /* color: var(--primary-color); */
+    position: absolute;
+    top: 50%;
+    /* left: 50%; */
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+}
+
 /* .cli .grid 下的第一个元素 */
 .cli .grid > *:first-child {
     grid-column: 1 / span 2;
@@ -215,7 +240,7 @@ code, pre {
 
 /* Features */
 .docs-head img,
-.features-head img{
+.features-head img {
     width: 200px;
     justify-self: flex-end;
 }
@@ -235,7 +260,7 @@ code, pre {
 
 .features-main .grid > *:first-child {
     /* grid-column: 1/4; */
-    grid-column: 1/span 3;
+    grid-column: 1 / span 3;
 }
 
 .features-main .grid > *:nth-child(2) {
@@ -307,7 +332,7 @@ code, pre {
 }
 
 /* Tablets and Under */
-@media(max-width: 768px) {
+@media (max-width: 768px) {
     /* 让所有grid元素在窄屏幕下呈一列现显示 */
     .grid,
     .showcase .grid,
@@ -318,6 +343,11 @@ code, pre {
     .docs-main .grid {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
+    }
+
+    /* 修复窄屏下 cli pre 高度过小问题 */
+    .cli pre {
+        height: 100px;
     }
 
     .showcase {
@@ -357,9 +387,13 @@ code, pre {
     }
 }
 
-
 /* Mobile */
-@media(max-width: 500px) {
+@media (max-width: 500px) {
+    /* 修复窄屏下 cli pre 高度过小问题 */
+    .cli pre {
+        height: 100px;
+    }
+
     .navbar {
         height: 110px;
     }
@@ -373,5 +407,3 @@ code, pre {
         background-color: rgba(0, 0, 0, 0.1);
     }
 }
-
-
