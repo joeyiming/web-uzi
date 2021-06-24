@@ -1,12 +1,21 @@
+/* 变量表 */
 :root {
+  /* 主题色 */
   --primary-color: #047aed;
+  /* 搭配色 */
   --secondary-color: #002240;
+  /* 暗色 */
   --dark-color: #002240;
+  /* 浅色 */
   --light-color: #f4f4f4;
+  /* 提示色：Success */
   --success-color: #5cb85c;
+  /* 提示色：Error */
   --error-color: #d9534f;
-  --code-font-family: Operator Mono SSm A, Operator Mono SSm B, Source Code Pro,
-    Menlo, Consolas, Monaco;
+  /* 代码块字体颜色 */
+  --code-color: #abffff;
+  /* 代码块首选字体 */
+  --code-font-family: Source Code Pro, Menlo, Consolas, Monaco;
 }
 
 * {
@@ -16,7 +25,7 @@
 }
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
   color: #333;
   line-height: 1.6;
 }
@@ -54,13 +63,13 @@ pre {
   padding: 10px;
 }
 
+/* .navbar */
 .navbar {
   background-color: var(--primary-color);
   color: #fff;
   height: 70px;
 }
 
-/* navbar内的flex元素，两端对齐 */
 .navbar .flex {
   justify-content: space-between;
 }
@@ -79,7 +88,7 @@ pre {
   border-bottom: #fff 2px solid;
 }
 
-/* Showcase */
+/* .showcase */
 .showcase {
   height: 400px;
   background-color: var(--primary-color);
@@ -97,11 +106,11 @@ pre {
 
 .showcase .grid {
   overflow: visible;
-  /*grid-template-columns: 55% 45%; 修复之前*/
-  grid-template-columns: 55% auto; /* 修复之后 */
+  grid-template-columns: 55% 45%;
   gap: 30px;
 }
 
+/* 应用从左滑入动画 */
 .showcase-text {
   animation: slideInFromLeft 1s ease-in;
 }
@@ -112,9 +121,10 @@ pre {
   height: 350px;
   width: 400px;
   padding: 40px;
-  /* z-index: 100; */
+  /* 设置较大的z-index，确保表单在覆盖层overlay上面 */
+  z-index: 100;
   justify-self: flex-end;
-
+  /*  应用从右滑入动画 */
   animation: slideInFromRight 1s ease-in;
 }
 
@@ -135,9 +145,8 @@ pre {
   outline: none;
 }
 
-/* .showcase::after, */
-.showcase::before {
-  content: "";
+/* 小花招：画一个平行四边形作为覆盖层实现切角效果 */
+.overlay {
   position: absolute;
   height: 100px;
   bottom: -70px;
@@ -145,15 +154,11 @@ pre {
   left: 0;
   background: #fff;
   transform: skewY(-3deg);
-  -webkit-transform: skewY(-3deg);
-  -moz-transform: skewY(-3deg);
-  -ms-transform: skewY(-3deg);
 }
 
-/* Stats */
+/* .stats */
 .stats {
   padding-top: 100px;
-
   animation: slideInFromBottom 1s ease-in;
 }
 
@@ -171,12 +176,13 @@ pre {
   font-weight: bold;
 }
 
-/* Cli */
+/* .cli */
 .cli .grid {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
 }
 
+/* 首页代码块：背景 */
 .cli pre {
   background-color: var(--secondary-color);
   border-radius: 10px;
@@ -185,31 +191,29 @@ pre {
   position: relative;
 }
 
+/* 首页代码块：字体区 */
 .cli code {
   background-color: var(--secondary-color);
-  color: #abffff;
-  /* color: var(--primary-color); */
+  color: var(--code-color);
   position: absolute;
   top: 50%;
-  /* left: 50%; */
   transform: translate(-50%, -50%);
   font-size: 24px;
 }
 
-/* .cli .grid 下的第一个元素 */
 .cli .grid > *:first-child {
   grid-column: 1 / span 2;
   grid-row: 1 / span 2;
 }
 
-/* Cloud */
+/* .cloud */
 .cloud .grid {
   grid-template-columns: 4fr 3fr;
 }
 
-/* Languages */
+/* .languages */
 .languages .flex {
-  /* 让flex元素自动换行 */
+  /* flex元素自动换行 */
   flex-wrap: wrap;
 }
 
@@ -225,11 +229,10 @@ pre {
 }
 
 .languages .card:hover {
-  /* 往上移动 */
   transform: translateY(-15px);
 }
 
-/* Features */
+/* .feautres */
 .docs-head img,
 .features-head img {
   width: 200px;
@@ -250,7 +253,6 @@ pre {
 }
 
 .features-main .grid > *:first-child {
-  /* grid-column: 1/4; */
   grid-column: 1 / span 3;
 }
 
@@ -258,7 +260,7 @@ pre {
   grid-column: 1/3;
 }
 
-/* Docs */
+/* .docs */
 .docs-main h3 {
   margin: 20px 0;
 }
@@ -279,12 +281,12 @@ pre {
   font-weight: bold;
 }
 
-/* Footer */
+/* .footer */
 .footer .social a {
   margin: 0 10px;
 }
 
-/* Animations */
+/* 动画 */
 @keyframes slideInFromLeft {
   0% {
     transform: translateX(-100%);
@@ -322,7 +324,7 @@ pre {
   }
 }
 
-/* Tablets and Under */
+/* 响应式布局设计 */
 @media (max-width: 768px) {
   /* 让所有grid元素在窄屏幕下呈一列现显示 */
   .grid,
@@ -336,7 +338,7 @@ pre {
     grid-template-rows: 1fr;
   }
 
-  /* 修复窄屏下 cli pre 高度过小问题 */
+  /* 保证窄屏下代码块依旧有足够高度显示内容 */
   .cli pre {
     height: 100px;
   }
@@ -378,11 +380,14 @@ pre {
   }
 }
 
-/* Mobile */
 @media (max-width: 500px) {
-  /* 修复窄屏下 cli pre 高度过小问题 */
   .cli pre {
     height: 100px;
+  }
+
+  /* 窄屏下调小代码字体 */
+  .cli code {
+    font-size: 20px;
   }
 
   .navbar {
